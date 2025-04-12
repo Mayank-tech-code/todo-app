@@ -9,7 +9,8 @@ export const create = async (req, res) => {
       return res.status(400).json({ message: "User data is required" });
     }
     const savedData = await userData.save();
-    res.status(200).json(savedData);
+    const userAdded = "User Added successfully";
+    res.status(200).json(userAdded);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

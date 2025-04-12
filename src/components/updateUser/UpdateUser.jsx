@@ -40,7 +40,7 @@ const UpdateUser = () => {
     await axios
       .put(`http://localhost:8000/api/updateUser/${id}`, user)
       .then((response) => {
-        toast.success(response.data.msg, { position: "top-right" });
+        toast.success(response.data.message, { position: "top-right" });
         navigate("/");
       })
       .catch((error) => console.log(error));

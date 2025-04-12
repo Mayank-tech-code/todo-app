@@ -14,7 +14,9 @@ dotenv.config();
 const PORT = process.env.PORT || 5000;
 
 mongoose
-  .connect("mongodb+srv://youtubeUser:admin@cluster0.n1t37zp.mongodb.net/CRUD")
+  .connect(
+    "mongodb+srv://agrawalmayank168:admin@cluster0.7v61y98.mongodb.net/TodosApp"
+  )
   .then(() => {
     console.log("Connected to MongoDB");
     app.listen(PORT, () => {

@@ -23,7 +23,7 @@ const GetUser = () => {
         setUsers((prevUsers) =>
           prevUsers.filter((user) => user._id !== userId)
         );
-        toast.success(response.data.msg, { position: "top-right" });
+        toast.success(response.data.message, { position: "top-right" });
       })
 
       .catch((error) => {

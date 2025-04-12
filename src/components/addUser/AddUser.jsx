@@ -27,7 +27,8 @@ const AddUser = () => {
     await axios
       .post("http://localhost:8000/api/create", user)
       .then((response) => {
-        toast.success(response.data.msg, { position: "top-right" });
+        toast.success(response.data, { position: "top-right" });
+        console.log(response.data);
         navigate("/");
       })
       .catch((error) => console.log(error));

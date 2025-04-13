@@ -1,9 +1,10 @@
 import express from "express";
-import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
 import route from "./routes/userRoute.js";
+import Authrouter from "./routes/AuthRouter.js";
+import connectDB from "./database/db.js";
 
 const app = express();
 
@@ -13,18 +14,15 @@ dotenv.config();
 
 const PORT = process.env.PORT || 5000;
 
-mongoose
-  .connect(
-    "mongodb+srv://agrawalmayank168:admin@cluster0.7v61y98.mongodb.net/TodosApp"
-  )
-  .then(() => {
-    console.log("Connected to MongoDB");
-    app.listen(PORT, () => {
-      console.log(`Server is running on port ${PORT}`);
-    });
-  })
-  .catch((err) => {
-    console.log(err);
+const startServer = async () => {
+  await connectDB();
+
+  app.listen(PORT, () => {
+    console.log(`🚀 Server is running on http://localhost:${PORT}`);
   });
+};
+
+startServer();
 
 app.use("/api", route);
+app.use("/auth", Authrouter);

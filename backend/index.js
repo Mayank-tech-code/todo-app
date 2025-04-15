@@ -5,6 +5,7 @@ import bodyParser from "body-parser";
 import route from "./routes/userRoute.js";
 import Authrouter from "./routes/AuthRouter.js";
 import connectDB from "./database/db.js";
+import ProductRouter from "./routes/ProductRouter.js";
 
 const app = express();
 
@@ -26,3 +27,4 @@ startServer();
 
 app.use("/api", route);
 app.use("/auth", Authrouter);
+app.use("/products", ProductRouter);

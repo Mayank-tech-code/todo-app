@@ -1,7 +1,19 @@
+import express from "express";
+import ensureAuthenticated from "../middlewares/Auth.js";
 const ProductRouter = express.Router();
 
-ProductRouter.get("/", (req, res) => {
-  res.send("Product Sign Up");
+ProductRouter.get("/", ensureAuthenticated, (req, res) => {
+  console.log("---- logged in user detail ---", req.user);
+  res.status(200).json([
+    {
+      name: "mobile",
+      price: 10000,
+    },
+    {
+      name: "tv",
+      price: 20000,
+    },
+  ]);
 });
 
 export default ProductRouter;
